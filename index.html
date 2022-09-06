@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <style>
         #map {
-            width: 1203px;
+            width: 1400px;
             height: 796px;
         }
         </style>
@@ -36,7 +36,7 @@
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:13, minZoom:8
-        }).fitBounds([[49.423416022172674,1.9439263268546099],[51.55587826337542,7.044890884783429]]);
+        }).fitBounds([[49.41371550580506,1.52593205626573],[51.55586626050592,7.462779180594606]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -170,7 +170,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(22,145,36,1.0)',
-                interactive: true,
+                interactive: false,
             }
         }
         map.createPane('pane_Obliquo_webviewer_2');
@@ -178,7 +178,7 @@
         map.getPane('pane_Obliquo_webviewer_2').style['mix-blend-mode'] = 'normal';
         var layer_Obliquo_webviewer_2 = new L.geoJson(json_Obliquo_webviewer_2, {
             attribution: '',
-            interactive: true,
+            interactive: false,
             dataVar: 'json_Obliquo_webviewer_2',
             layerName: 'layer_Obliquo_webviewer_2',
             pane: 'pane_Obliquo_webviewer_2',
@@ -230,7 +230,7 @@
                 lineJoin: 'miter',
                 weight: 3.0, 
                 fillOpacity: 0,
-                interactive: true,
+                interactive: false,
             }
         }
         map.createPane('pane_AD_4_Province2_3');
@@ -238,7 +238,7 @@
         map.getPane('pane_AD_4_Province2_3').style['mix-blend-mode'] = 'normal';
         var layer_AD_4_Province2_3 = new L.geoJson(json_AD_4_Province2_3, {
             attribution: '',
-            interactive: true,
+            interactive: false,
             dataVar: 'json_AD_4_Province2_3',
             layerName: 'layer_AD_4_Province2_3',
             pane: 'pane_AD_4_Province2_3',
