@@ -36,7 +36,7 @@
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:13, minZoom:8
-        }).fitBounds([[49.41897309654288,1.7449142382377694],[51.55587800617933,7.243854515363646]]);
+        }).fitBounds([[49.361052837739216,2.426574763023054],[51.62773082023032,6.562737920966641]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -125,35 +125,44 @@
                         <td colspan="2">' + (feature.properties['City'] !== null ? autolinker.link(feature.properties['City'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
+                        <td colspan="2">' + (feature.properties['Gewest'] !== null ? autolinker.link(feature.properties['Gewest'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
                         <td colspan="2">' + (feature.properties['LanguageSt'] !== null ? autolinker.link(feature.properties['LanguageSt'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['NISCode'] !== null ? autolinker.link(feature.properties['NISCode'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['NameGer'] !== null ? autolinker.link(feature.properties['NameGer'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['NameFre'] !== null ? autolinker.link(feature.properties['NameFre'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['NameDut'] !== null ? autolinker.link(feature.properties['NameDut'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">NAAM</th>\
                         <td>' + (feature.properties['NAAM'] !== null ? autolinker.link(feature.properties['NAAM'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Gewest'] !== null ? autolinker.link(feature.properties['Gewest'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['NISCode'] !== null ? autolinker.link(feature.properties['NISCode'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NameDut'] !== null ? autolinker.link(feature.properties['NameDut'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NameFre'] !== null ? autolinker.link(feature.properties['NameFre'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NameGer'] !== null ? autolinker.link(feature.properties['NameGer'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['Opp'] !== null ? autolinker.link(feature.properties['Opp'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
+                        <td colspan="2">' + (feature.properties['Opp(km²)'] !== null ? autolinker.link(feature.properties['Opp(km²)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['flight_dat'] !== null ? autolinker.link(feature.properties['flight_dat'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['mun_nor'] !== null ? autolinker.link(feature.properties['mun_nor'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
                         <td colspan="2">' + (feature.properties['webview'] !== null ? autolinker.link(feature.properties['webview'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Opp(km²)'] !== null ? autolinker.link(feature.properties['Opp(km²)'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['year'] !== null ? autolinker.link(feature.properties['year'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
