@@ -7,12 +7,16 @@
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css">
-        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/L.Control.Layers.Tree.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <style>
-        #map {
-            width: 100vw;
-            height: 100vh;
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
         }
         </style>
         <title></title>
@@ -22,6 +26,7 @@
         </div>
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script>
+        <script src="js/L.Control.Layers.Tree.min.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
         <script src="js/leaflet.pattern.js"></script>
         <script src="js/leaflet-hash.js"></script>
@@ -36,7 +41,7 @@
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:13, minZoom:8
-        }).fitBounds([[49.408894852124355,2.428581736707739],[51.57990368665866,6.560469541448941]]);
+        }).fitBounds([[49.17515531638407,2.4187366345759758],[51.81362418022752,6.57159695996791]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -128,7 +133,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(225,155,199,0.4980392156862745)',
-                interactive: true,
+                interactive: false,
             }
         }
         map.createPane('pane_Multicam_BG_1');
@@ -136,7 +141,7 @@
         map.getPane('pane_Multicam_BG_1').style['mix-blend-mode'] = 'normal';
         var layer_Multicam_BG_1 = new L.geoJson(json_Multicam_BG_1, {
             attribution: '',
-            interactive: true,
+            interactive: false,
             dataVar: 'json_Multicam_BG_1',
             layerName: 'layer_Multicam_BG_1',
             pane: 'pane_Multicam_BG_1',
@@ -148,47 +153,16 @@
         function pop_Obliquo_webviewer_2(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['City'] !== null ? autolinker.link(feature.properties['City'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Gewest'] !== null ? autolinker.link(feature.properties['Gewest'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['LanguageSt'] !== null ? autolinker.link(feature.properties['LanguageSt'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <th scope="row">NAAM</th>\
                         <td>' + (feature.properties['NAAM'] !== null ? autolinker.link(feature.properties['NAAM'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['NISCode'] !== null ? autolinker.link(feature.properties['NISCode'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">flight_dat</th>\
+                        <td>' + (feature.properties['flight_dat'] !== null ? autolinker.link(feature.properties['flight_dat'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['NameDut'] !== null ? autolinker.link(feature.properties['NameDut'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['NameFre'] !== null ? autolinker.link(feature.properties['NameFre'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['NameGer'] !== null ? autolinker.link(feature.properties['NameGer'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Opp'] !== null ? autolinker.link(feature.properties['Opp'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Opp(km²)'] !== null ? autolinker.link(feature.properties['Opp(km²)'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['flight_dat'] !== null ? autolinker.link(feature.properties['flight_dat'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['mun_nor'] !== null ? autolinker.link(feature.properties['mun_nor'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['webview'] !== null ? autolinker.link(feature.properties['webview'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['year'] !== null ? autolinker.link(feature.properties['year'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">year</th>\
+                        <td>' + (feature.properties['year'] !== null ? autolinker.link(feature.properties['year'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -302,7 +276,21 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/AD_4_Province2_3.png" /> AD_4_Province2': layer_AD_4_Province2_3,'<img src="legend/Obliquo_webviewer_2.png" /> Obliquo_webviewer': layer_Obliquo_webviewer_2,'<img src="legend/Multicam_BG_1.png" /> Multicam_BG': layer_Multicam_BG_1,"OSM Standard": layer_OSMStandard_0,}).addTo(map);
+        var overlaysTree = [
+            {label: '<img src="legend/AD_4_Province2_3.png" /> AD_4_Province2', layer: layer_AD_4_Province2_3},
+            {label: '<img src="legend/Obliquo_webviewer_2.png" /> Obliquo_webviewer', layer: layer_Obliquo_webviewer_2},
+            {label: '<img src="legend/Multicam_BG_1.png" /> Multicam_BG', layer: layer_Multicam_BG_1},
+            {label: "OSM Standard", layer: layer_OSMStandard_0},]
+        var lay = L.control.layers.tree(null, overlaysTree,{
+            //namedToggle: true,
+            //selectorBack: false,
+            //closedSymbol: '&#8862; &#x1f5c0;',
+            //openedSymbol: '&#8863; &#x1f5c1;',
+            //collapseAll: 'Collapse all',
+            //expandAll: 'Expand all',
+            collapsed: true,
+        });
+        lay.addTo(map);
         setBounds();
         var i = 0;
         layer_Multicam_BG_1.eachLayer(function(layer) {
